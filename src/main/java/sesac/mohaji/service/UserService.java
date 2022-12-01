@@ -15,10 +15,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    public Optional idcheck(String id) {
+        return userRepository.findById(id);
+    }
+
     public void signup(User user) {
         userRepository.save(user);
     }
-    
+
     public Optional login(String id, String password) {
         return userRepository.findByIdAndPassword(id, password);
     }

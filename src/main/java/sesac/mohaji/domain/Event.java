@@ -18,6 +18,24 @@ public class Event {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String type;
+
+    @Column(nullable = false)
+    private String place;
+
+    @Column(nullable = false)
+    private String time;
+
+    @Column(nullable = false)
+    private String price;
+
     @Column(columnDefinition = "TEXT")
     private String url;
+
+    @Column(columnDefinition = "TEXT")
+    private String detail;
+
+    @Column(columnDefinition = "TEXT")
+    private String address;
 }

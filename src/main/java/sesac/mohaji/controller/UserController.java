@@ -2,29 +2,34 @@ package sesac.mohaji.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import sesac.mohaji.domain.User;
 import sesac.mohaji.dto.UserDTO;
 import sesac.mohaji.service.UserService;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("user")
+@CrossOrigin
 public class UserController {
 
     private final UserService userService;
 
     @PostMapping("/idCheck")
     @ResponseBody
-    public String idcheck(@RequestBody UserDTO userDTO) {
+    public Class idcheck(@RequestBody UserDTO userDTO) {
+
+        Map<String, Boolean> result = new HashMap<>();
+
         String id = userDTO.getId();
-        System.out.println(id);
-        System.out.println(userService.idcheck(id));
-//        userService.idcheck(id);
-        return "true";
+        System.out.println("id" + id);
+        Optional result = userService.idcheck(id);
+        System.out.println(result);
+        return result;
     }
 
     @PostMapping("/signup")
